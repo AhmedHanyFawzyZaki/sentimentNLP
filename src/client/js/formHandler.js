@@ -21,20 +21,25 @@ function handleSubmit(event) {
 
     console.log(requestData)*/
 
-    console.log("::: Form Submitted :::")
-    fetch('http://localhost:8081/test?formText='+formText)
-    /*fetch('https://api.meaningcloud.com/sentiment-2.1', {
-        method: 'POST',
-        //body: JSON.stringify(requestData)
-        body: requestData
-    })*/
-    .then(res => {
-        return res.json()
-    })
-    .then(function (data) {
-        console.log(data);
-        document.getElementById('results').innerHTML = JSON.stringify(data)
-    })
+    if(formText != '') {
+        console.log("::: Form Submitted :::")
+        fetch('http://localhost:8081/test?formText='+formText)
+        /*fetch('https://api.meaningcloud.com/sentiment-2.1', {
+            method: 'POST',
+            //body: JSON.stringify(requestData)
+            body: requestData
+        })*/
+        .then(res => {
+            return res.json()
+        })
+        .then(function (data) {
+            console.log(data);
+            document.getElementById('results').innerHTML = JSON.stringify(data)
+        })
+    } else {
+        alert("Please enter a text");
+        document.getElementById('name').focus();
+    }
 }
 
 export { handleSubmit }
