@@ -5,6 +5,7 @@ console.log(`Your API key is ${process.env.API_KEY}`);
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const request = require('request');
 
 const app = express()
 
@@ -23,5 +24,17 @@ app.listen(8081, function () {
 })
 
 app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+    //res.send(mockAPIResponse)
+
+    var requestData = {
+        uri: 'https://api.meaningcloud.com/sentiment-2.1?txt=' + req.query.formText + '&key='+process.env.API_KEY+'&lang=en&of=json',
+        method: 'POST'
+    }
+    console.log(requestData)
+    
+    request(requestData, function (error, http_res) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(http_res.body)
+    });
 })
