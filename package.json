@@ -1,5 +1,5 @@
 {
-  "name": "NLPNews",
+  "name": "nlp-news",
   "version": "1.0.2",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "build-dev": "webpack-dev-server  --config webpack.dev.js --open"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ahmed Hany",
   "license": "ISC",
   "description": "",
   "dependencies": {

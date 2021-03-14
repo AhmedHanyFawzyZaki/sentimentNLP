@@ -1,5 +1,5 @@
-function checkForName(inputText) {
-    console.log("::: Running checkForName :::", inputText);
+function checkForName(url) {
+    /*console.log("::: Running checkForName :::", inputText);
     let names = [
         "Picard",
         "Janeway",
@@ -10,7 +10,15 @@ function checkForName(inputText) {
 
     if(names.includes(inputText)) {
         alert("Welcome, Captain!")
+    }*/
+
+    var pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    if (pattern.test(url)) {
+        //alert("Url is valid");
+        return true;
     }
+    //alert("Url is not valid!");
+    return false;
 }
 
 export { checkForName }

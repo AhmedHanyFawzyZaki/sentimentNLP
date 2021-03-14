@@ -3,7 +3,7 @@ function handleSubmit(event) {
 
     // check what text was put into the form field
     let formText = document.getElementById('name').value
-    Client.checkForName(formText)
+    var contin = Client.checkForName(formText)
 
     /*var requestData = {
         txt: formText,
@@ -21,7 +21,7 @@ function handleSubmit(event) {
 
     console.log(requestData)*/
 
-    if(formText != '') {
+    if(contin) {
         console.log("::: Form Submitted :::")
         fetch('http://localhost:8081/test?formText='+formText)
         /*fetch('https://api.meaningcloud.com/sentiment-2.1', {
@@ -37,7 +37,7 @@ function handleSubmit(event) {
             document.getElementById('results').innerHTML = JSON.stringify(data)
         })
     } else {
-        alert("Please enter a text");
+        alert("Please enter a valid url");
         document.getElementById('name').focus();
     }
 }
