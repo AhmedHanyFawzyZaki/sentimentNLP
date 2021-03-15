@@ -23,7 +23,9 @@ function handleSubmit(event) {
 
     if(contin) {
         console.log("::: Form Submitted :::")
-        fetch('http://localhost:8081/test?formText='+formText)
+        fetch('http://localhost:8081/test?formText='+formText, {
+            method: 'GET'
+        })
         /*fetch('https://api.meaningcloud.com/sentiment-2.1', {
             method: 'POST',
             //body: JSON.stringify(requestData)
@@ -34,7 +36,10 @@ function handleSubmit(event) {
         })
         .then(function (data) {
             console.log(data);
-            document.getElementById('results').innerHTML = JSON.stringify(data)
+            document.getElementById('results').innerHTML = '<br><p>Irony: ' + data.irony + '</p><br>' + 
+            '<p>Confidence: ' + data.confidence + '</p><br>' + 
+            '<p>Model: ' + data.model + '</p><br>' + 
+            '<p>Agreement: ' + data.agreement + '</p>';
         })
     } else {
         alert("Please enter a valid url");
